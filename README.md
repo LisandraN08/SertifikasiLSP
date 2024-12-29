@@ -50,7 +50,7 @@ Sebelum menjalankan aplikasi ini, pastikan Anda sudah memiliki:
 
 1. Clone repositori ini ke komputer lokal Anda:
    ```bash
-   git clone https://github.com/username/repository-name.git
+   git clone https://github.com/LisandraN08/SertifikasiLSP.git
    ```
 
 2. Buka proyek di Visual Studio.
