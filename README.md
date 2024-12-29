@@ -15,6 +15,15 @@ Di bawah ini adalah model fisik yang menunjukkan implementasi struktur tabel di 
 
 Gambar 2: PDM untuk Aplikasi Manajemen Peminjaman Buku
 
+## Wireframe
+Wireframe ini dibuat untuk memberikan gambaran visual tentang antarmuka pengguna aplikasi Manajemen Peminjaman Buku. Wireframe ini dirancang untuk memudahkan navigasi dan memvisualisasikan alur pengguna dalam aplikasi.
+![Wireframe](./images/wireframe.png)
+
+Gambar 3: Wireframe Aplikasi Manajemen Peminjaman Buku
+
+Untuk melihat desain wireframe secara detail dan berinteraksi dengan prototipe, kunjungi tautan Figma berikut:
+[Wireframe Aplikasi Manajemen Peminjaman Buku](https://www.figma.com/proto/C7yK1FLsR1njO0HFG5xYdX/Untitled?node-id=10-133&p=f&t=uHXI7yDdH12siR1J-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=10%3A133)
+
 ## Fitur Utama
 1. **Login Petugas**
    - Petugas dapat masuk menggunakan username dan password yang sudah terdaftar di sistem.
