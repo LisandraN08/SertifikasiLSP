@@ -23,15 +23,6 @@ Di bawah ini adalah Class Diagram yang menggambarkan struktur dari sistem manaje
 Gambar 3: Class Diagram untuk Aplikasi Manajemen Peminjaman Buku
 
 Berikut adalah penjelasan singkat mengenai Class Diagram di atas:
-Kelas yang Ada:
-Kalimat Anda sudah cukup jelas, namun bisa sedikit diperbaiki untuk meningkatkan kejelasan dan tata bahasanya agar lebih profesional untuk README. Berikut adalah versi yang disempurnakan:
-
----
-
-## Class Diagram
-
-Di bawah ini adalah Class Diagram yang saya buat untuk sistem manajemen perpustakaan. Berikut adalah penjelasan singkat mengenai Class Diagram:
-
 ### Kelas yang Ada:
 1. **Anggota**:
    - **Atribut**: 
