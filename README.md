@@ -15,11 +15,84 @@ Di bawah ini adalah model fisik yang menunjukkan implementasi struktur tabel di 
 
 Gambar 2: PDM untuk Aplikasi Manajemen Peminjaman Buku
 
+## Class Diagram
+Di bawah ini adalah Class Diagram yang menggambarkan struktur dari sistem manajemen peminjaman buku untuk perpustakaan. 
+
+![Class Diagram](./images/class-diagram.png)
+
+Gambar 3: Class Diagram untuk Aplikasi Manajemen Peminjaman Buku
+
+Berikut adalah penjelasan singkat mengenai Class Diagram di atas:
+Kelas yang Ada:
+Kalimat Anda sudah cukup jelas, namun bisa sedikit diperbaiki untuk meningkatkan kejelasan dan tata bahasanya agar lebih profesional untuk README. Berikut adalah versi yang disempurnakan:
+
+---
+
+## Class Diagram
+
+Di bawah ini adalah Class Diagram yang saya buat untuk sistem manajemen perpustakaan. Berikut adalah penjelasan singkat mengenai Class Diagram:
+
+### Kelas yang Ada:
+1. **Anggota**:
+   - **Atribut**: 
+     - `IDAnggota`: String, ID unik untuk anggota.
+     - `NamaAnggota`: String, nama anggota.
+     - `status_del`: Boolean, menandakan apakah anggota telah dihapus (soft delete).
+   - **Operasi**: 
+     - `LoadAnggota()`: Memuat data anggota.
+     - `TambahAnggota()`: Menambahkan data anggota baru.
+     - `EditAnggota()`: Mengedit data anggota.
+     - `HapusAnggota()`: Menghapus data anggota.
+
+2. **Buku**:
+   - **Atribut**: 
+     - `IDBuku`: String, ID unik untuk buku.
+     - `JudulBuku`: String, judul buku.
+     - `NamaPengarang`: String, nama pengarang buku.
+     - `TanggalTerbit`: Date, tanggal terbit buku.
+     - `status_del`: Boolean, menandakan apakah buku telah dihapus (soft delete).
+   - **Operasi**: 
+     - `LoadBuku()`: Memuat data buku.
+     - `TambahBuku()`: Menambahkan data buku baru.
+     - `EditBuku()`: Mengedit data buku.
+     - `HapusBuku()`: Menghapus data buku.
+
+3. **Peminjaman**:
+   - **Atribut**: 
+     - `Peminjaman_No`: Integer, nomor unik untuk peminjaman.
+     - `TanggalPinjam`: Date, tanggal peminjaman buku.
+     - `TanggalKembali`: Date, tanggal buku dikembalikan.
+     - `TanggalHarusKembali`: Date, batas waktu pengembalian buku.
+     - `StatusPeminjaman`: Boolean, status peminjaman (aktif atau selesai).
+   - **Operasi**: 
+     - `LoadPeminjaman()`: Memuat data peminjaman.
+     - `TambahPeminjaman()`: Menambahkan data peminjaman baru.
+     - `UpdatePeminjaman()`: Memperbarui data peminjaman.
+
+4. **Petugas**:
+   - **Atribut**: 
+     - `IDPetugas`: String, ID unik untuk petugas.
+     - `NamaPetugas`: String, nama petugas.
+     - `Username`: String, nama pengguna untuk login.
+     - `Password`: String, kata sandi untuk login.
+   - **Operasi**: 
+     - `LoginHomePetugas()`: Mengelola proses login petugas.
+
+### Relasi Antar Kelas:
+1. **Anggota ↔ Peminjaman:**
+   Relasi 1 ke 0..*: Seorang anggota bisa memiliki banyak peminjaman, tetapi satu peminjaman hanya terkait dengan satu anggota.
+
+2. **Buku ↔ Peminjaman:**
+   Relasi 1 ke 0..*: Satu buku bisa memiliki banyak peminjaman, tetapi satu peminjaman hanya terkait dengan satu buku.
+
+3. **Petugas:**
+   Tidak memiliki relasi dengan kelas lain.
+
 ## Wireframe
 Wireframe ini dibuat untuk memberikan gambaran visual tentang antarmuka pengguna aplikasi Manajemen Peminjaman Buku. Wireframe ini dirancang untuk memudahkan navigasi dan memvisualisasikan alur pengguna dalam aplikasi.
 ![Wireframe](./images/wireframe.png)
 
-Gambar 3: Wireframe Aplikasi Manajemen Peminjaman Buku
+Gambar 4: Wireframe Aplikasi Manajemen Peminjaman Buku
 
 Untuk melihat desain wireframe secara detail dan berinteraksi dengan prototipe, kunjungi tautan Figma berikut:
 [Wireframe Aplikasi Manajemen Peminjaman Buku](https://www.figma.com/proto/C7yK1FLsR1njO0HFG5xYdX/Untitled?node-id=10-133&p=f&t=uHXI7yDdH12siR1J-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=10%3A133)
@@ -93,4 +166,4 @@ Di bawah ini adalah tabel hasil user testing scenario yang sudah dilakukan.
 
 ![User Testing](./images/usertestingscenario.png)
 
-Gambar 3: Tabel User Testing Scenario untuk Aplikasi Manajemen Peminjaman Buku
+Gambar 5: Tabel User Testing Scenario untuk Aplikasi Manajemen Peminjaman Buku
