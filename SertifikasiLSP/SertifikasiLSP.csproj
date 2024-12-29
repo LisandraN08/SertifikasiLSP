@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3F71D508-168A-41D2-991B-98D9AFF5B05A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>BelajarSertifikasiLSP</RootNamespace>
-    <AssemblyName>BelajarSertifikasiLSP</AssemblyName>
+    <RootNamespace>SertifikasiLSP</RootNamespace>
+    <AssemblyName>SertifikasiLSP</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -217,6 +217,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
