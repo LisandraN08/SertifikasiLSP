@@ -78,3 +78,10 @@ Sebelum menjalankan aplikasi ini, pastikan Anda sudah memiliki:
 
 5. **Melihat Riwayat Peminjaman**:
    - Petugas dapat melihat status peminjaman buku dan tanggal kembali buku di bagian peminjaman.
+  
+## User Testing Scenario
+Di bawah ini adalah tabel hasil user testing scenario yang sudah dilakukan.
+
+![User Testing](./images/usertestingscenario.png)
+
+Gambar 3: Tabel User Testing Scenario untuk Aplikasi Manajemen Peminjaman Buku
