@@ -30,7 +30,7 @@ namespace BelajarSertifikasiLSP
             }
 
             // Query untuk memeriksa username dan password
-            string sql = "SELECT COUNT(*) FROM PETUGAS WHERE PETUGAS_USERNAME = @username AND PETUGAS_PASSWORD = @password";
+            string sql = "SELECT COUNT(*) FROM PETUGAS WHERE BINARY PETUGAS_USERNAME = @username AND PETUGAS_PASSWORD = @password";
 
             string connstring = "server=sub7.sift-uc.id;uid=subsift8_lsp_user;pwd=BLT-?[aYWgkp;database=subsift8_lsp";
             MySqlConnection con = new MySqlConnection(connstring);
