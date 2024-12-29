@@ -3,6 +3,18 @@
 
 Aplikasi ini adalah sistem manajemen peminjaman buku untuk perpustakaan. Aplikasi ini memungkinkan petugas untuk mengelola anggota, buku, serta transaksi peminjaman dan pengembalian buku dengan mudah. Pengguna dapat melakukan pencarian anggota, meminjam buku, mengembalikan buku, serta melihat riwayat peminjaman.
 
+## CDM (Conceptual Data Model)
+Berikut adalah model konseptual yang menggambarkan hubungan antara entitas dalam sistem manajemen peminjaman buku.
+./images/cdm-diagram.png
+
+Gambar 1: CDM untuk Aplikasi Manajemen Peminjaman Buku
+
+## PDM (Physical Data Model)
+Di bawah ini adalah model fisik yang menunjukkan implementasi struktur tabel di database, termasuk relasi dan tipe data.
+./images/cdm-diagram.png
+
+Gambar 2: PDM untuk Aplikasi Manajemen Peminjaman Buku
+
 ## Fitur Utama
 1. **Login Petugas**
    - Petugas dapat masuk menggunakan username dan password yang sudah terdaftar di sistem.
