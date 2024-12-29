@@ -5,13 +5,13 @@ Aplikasi ini adalah sistem manajemen peminjaman buku untuk perpustakaan. Aplikas
 
 ## CDM (Conceptual Data Model)
 Berikut adalah model konseptual yang menggambarkan hubungan antara entitas dalam sistem manajemen peminjaman buku.
-./images/cdm-diagram.png
+![CDM Diagram](./images/cdm-diagram.png)
 
 Gambar 1: CDM untuk Aplikasi Manajemen Peminjaman Buku
 
 ## PDM (Physical Data Model)
 Di bawah ini adalah model fisik yang menunjukkan implementasi struktur tabel di database, termasuk relasi dan tipe data.
-./images/cdm-diagram.png
+![PDM Diagram](./images/pdm-diagram.png)
 
 Gambar 2: PDM untuk Aplikasi Manajemen Peminjaman Buku
 
