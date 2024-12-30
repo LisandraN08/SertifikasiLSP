@@ -44,7 +44,7 @@ namespace BelajarSertifikasiLSP
 
                         while (reader.Read())
                         {
-                            // Mengisi tBoxNamaAnggota dan tBoxAlamatAnggota dengan nilai dari database
+                            // Mengisi tBoxNamaAnggota dengan nilai dari database
                             tBoxNamaAnggota.Text = reader["ANGGOTA_NAMA"].ToString();
                         }
                     }
@@ -64,14 +64,12 @@ namespace BelajarSertifikasiLSP
             // Mendapatkan input dari pengguna
             string namaAnggota = tBoxNamaAnggota.Text;
 
-            // String koneksi ke database
             string connString = "server=sub7.sift-uc.id;uid=subsift8_lsp_user;pwd=BLT-?[aYWgkp;database=subsift8_lsp";
 
             using (MySqlConnection con = new MySqlConnection(connString))
             {
                 try
                 {
-                    // Membuka koneksi
                     con.Open();
 
                     // Query untuk menambahkan update data dari tabel ANGGOTA
@@ -126,16 +124,6 @@ namespace BelajarSertifikasiLSP
                     MessageBox.Show($"Kesalahan database: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void tBoxNamaAnggota_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

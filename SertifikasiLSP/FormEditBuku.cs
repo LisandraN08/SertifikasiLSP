@@ -68,17 +68,15 @@ namespace BelajarSertifikasiLSP
             string namaPengarang = tBoxNamaPengarang.Text;
             DateTime tanggalTerbit = dateTimePickerTanggalTerbit.Value;
 
-            // String koneksi ke database
             string connString = "server=sub7.sift-uc.id;uid=subsift8_lsp_user;pwd=BLT-?[aYWgkp;database=subsift8_lsp";
 
             using (MySqlConnection con = new MySqlConnection(connString))
             {
                 try
                 {
-                    // Membuka koneksi
                     con.Open();
 
-                    // Query untuk menambahkan update data dari tabel BUKU
+                    // Query untuk menambahkan update data dari tabel buku
                     string updateBukuQuery = "UPDATE BUKU " +
                                              "SET BUKU_JUDUL=@judulBuku, BUKU_PENGARANG=@namaPengarang, BUKU_TANGGALTERBIT=@tanggalTerbit WHERE BUKU_ID=@idBuku";
 

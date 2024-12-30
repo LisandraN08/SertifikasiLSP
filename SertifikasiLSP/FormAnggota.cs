@@ -13,8 +13,6 @@ namespace BelajarSertifikasiLSP
         public FormAnggota()
         {
             InitializeComponent();
-
-            // Load all members on form load
             LoadAnggota();
         }
 
@@ -37,14 +35,12 @@ namespace BelajarSertifikasiLSP
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                // Populate the ListBox with data
+                // Mengisi listBoxAnggota dengan id dan nama anggota
                 while (reader.Read())
                 {
-                    // Store both IDANGGOTA and NAMAANGGOTA as the ListBox item (e.g., "1 - John Doe")
                     listBoxAnggota.Items.Add($"{reader["ANGGOTA_ID"]} - {reader["ANGGOTA_NAMA"]}");
                 }
 
-                // Close the connection
                 reader.Close();
                 con.Close();
             }
@@ -64,17 +60,16 @@ namespace BelajarSertifikasiLSP
 
             try
             {
-                // Get the selected item (e.g., "1 - John Doe") and extract the IDANGGOTA
+                // Mengambil idAnggota saja (listBoxAnggota.SelectedItem di sebelum tanda -)
                 string selectedItem = listBoxAnggota.SelectedItem.ToString();
                 string[] parts = selectedItem.Split('-');
                 string idAnggota = parts[0].Trim();
 
-                // Connection string
                 string connstring = "server=sub7.sift-uc.id;uid=subsift8_lsp_user;pwd=BLT-?[aYWgkp;database=subsift8_lsp";
                 MySqlConnection con = new MySqlConnection(connstring);
                 con.Open();
 
-                // Query to get all details for the selected IDANGGOTA
+                // Mendapatkan detail anggota dengan id=idAnggota
                 string sqlAnggota = "SELECT ANGGOTA_ID, ANGGOTA_NAMA FROM ANGGOTA WHERE ANGGOTA_ID = @id AND STATUS_DEL=0";
                 MySqlCommand cmdAnggota = new MySqlCommand(sqlAnggota, con);
                 cmdAnggota.Parameters.AddWithValue("@id", idAnggota);
@@ -83,11 +78,10 @@ namespace BelajarSertifikasiLSP
 
                 if (reader.Read())
                 {
-                    // Display the details in the label
+                    // Menampilkan detail anggota
                     lblDetailAnggota.Text = $"ID: {reader["ANGGOTA_ID"]}\n" +
                                             $"Nama: {reader["ANGGOTA_NAMA"]}";
 
-                    // Enable the "PINJAM" button
                     btnPinjam.Enabled = true;
                 }
                 else
@@ -98,7 +92,7 @@ namespace BelajarSertifikasiLSP
 
                 reader.Close();
 
-                // Query to get books being borrowed by the selected IDANGGOTA
+                // Mendapatkan semua buku yang dipinjam oleh idAnggota
                 string sqlBukuDipinjam = @"
                                 SELECT B.BUKU_JUDUL, P.TANGGAL_HARUSKEMBALI
                                 FROM PEMINJAMAN P
@@ -168,20 +162,18 @@ namespace BelajarSertifikasiLSP
 
         private void btnCari_Click(object sender, EventArgs e)
         {
-            // Get the search term and reload the ListBox with filtered results
+            // Mendapatkan isi dari tBoxCari
             string searchTerm = tBoxCari.Text.Trim();
 
             try
             {
-                // Clear existing items in the ListBox
                 listBoxAnggota.Items.Clear();
 
-                // Connection string
                 string connstring = "server=sub7.sift-uc.id;uid=subsift8_lsp_user;pwd=BLT-?[aYWgkp;database=subsift8_lsp";
                 MySqlConnection con = new MySqlConnection(connstring);
                 con.Open();
 
-                // Query to select NAMAANGGOTA
+                // Query untuk mendapatkan id dan nama anggota
                 string sql = "SELECT ANGGOTA_ID, ANGGOTA_NAMA FROM ANGGOTA WHERE STATUS_DEL=0";
                 if (!string.IsNullOrEmpty(searchTerm))
                 {
@@ -190,7 +182,7 @@ namespace BelajarSertifikasiLSP
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
 
-                // Add parameter for search term
+                // Parameter untuk search term
                 if (!string.IsNullOrEmpty(searchTerm))
                 {
                     cmd.Parameters.AddWithValue("@searchTerm", "%" + searchTerm + "%");
@@ -198,14 +190,12 @@ namespace BelajarSertifikasiLSP
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                // Populate the ListBox with data
                 while (reader.Read())
                 {
-                    // Store both IDANGGOTA and NAMAANGGOTA as the ListBox item (e.g., "1 - John Doe")
+                    // Memasukkan id anggota dan nama anggota ke listBoxAnggota
                     listBoxAnggota.Items.Add($"{reader["ANGGOTA_ID"]} - {reader["ANGGOTA_NAMA"]}");
                 }
 
-                // Close the connection
                 reader.Close();
                 con.Close();
             }
@@ -217,15 +207,12 @@ namespace BelajarSertifikasiLSP
 
         private void btnPinjam_Click(object sender, EventArgs e)
         {
-            // Logic for the PINJAM button
-
             string selectedItem = listBoxAnggota.SelectedItem.ToString();
             string[] parts = selectedItem.Split('-');
             string idAnggota = parts[0].Trim();
 
             FormListBukuUntukDipinjam formListBukuUntukDipinjam = new FormListBukuUntukDipinjam(idAnggota);
             formListBukuUntukDipinjam.ShowDialog();
-
         }
 
         private void btnEditAnggota_Click(object sender, EventArgs e)

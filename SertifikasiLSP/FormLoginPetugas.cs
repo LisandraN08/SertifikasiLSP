@@ -42,7 +42,7 @@ namespace BelajarSertifikasiLSP
                 {
                     // Menambahkan parameter untuk username dan password
                     cmd.Parameters.AddWithValue("@username", username);
-                    cmd.Parameters.AddWithValue("@password", password); // Pastikan password terenkripsi jika digunakan dalam aplikasi asli
+                    cmd.Parameters.AddWithValue("@password", password);
 
                     int count = Convert.ToInt32(cmd.ExecuteScalar()); // Mengeksekusi query untuk mendapatkan jumlah kecocokan
 

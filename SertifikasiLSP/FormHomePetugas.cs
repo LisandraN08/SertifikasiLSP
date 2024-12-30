@@ -44,11 +44,6 @@ namespace BelajarSertifikasiLSP
             Application.Exit();
         }
 
-        private void mainPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnPeminjaman_Click(object sender, EventArgs e)
         {
             loadform(new FormPeminjaman());

@@ -16,13 +16,6 @@ namespace BelajarSertifikasiLSP
             LoadAllBooks();
         }
 
-
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void LoadAllBooks()
         {
             panel1.Visible = false;
@@ -42,13 +35,12 @@ namespace BelajarSertifikasiLSP
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                // Populate the ListBox with data
+                // Mengisi listBoxBuku dengan id buku dan judul buku
                 while (reader.Read())
                 {
                     listBoxBuku.Items.Add($"{reader["BUKU_ID"]} - {reader["BUKU_JUDUL"]}");
                 }
 
-                // Close the connection
                 reader.Close();
                 con.Close();
             }
@@ -70,7 +62,6 @@ namespace BelajarSertifikasiLSP
             // Query untuk mencari buku berdasarkan Judul
             string sql = "SELECT BUKU_ID, BUKU_JUDUL FROM BUKU WHERE BUKU_JUDUL LIKE @searchTerm AND STATUS_DEL=0 ";
 
-
             try
             {
 
@@ -84,7 +75,7 @@ namespace BelajarSertifikasiLSP
                     {
                         listBoxBuku.Items.Clear(); // Bersihkan hasil pencarian sebelumnya
 
-                        // Menambahkan IDBUKU dan JUDULBUKU ke ListBox
+                        // Menambahkan id buku dan judul buku sesuai pencarian ke listBoxBuku
                         while (reader.Read())
                         {
                             listBoxBuku.Items.Add($"{reader["BUKU_ID"]} - {reader["BUKU_JUDUL"]}");
@@ -110,7 +101,7 @@ namespace BelajarSertifikasiLSP
                 // Ambil item yang dipilih
                 string selectedItem = listBoxBuku.SelectedItem.ToString();
 
-                // Ekstrak IDBUKU sebelum tanda '-'
+                // Ekstrak id buku sebelum tanda '-'
                 idBuku = selectedItem.Split('-')[0].Trim();
 
                 // Query detail buku dari database
@@ -198,7 +189,7 @@ namespace BelajarSertifikasiLSP
         private void btnKembalikan_Click(object sender, EventArgs e)
         {
             
-            // Pastikan idAnggota sudah ada dari ShowBookDetails
+            // Mengambil idAnggota yang sudah diisi di ShowBookDetails
             if (!string.IsNullOrEmpty(idAnggota))
             {
                 // Query untuk memperbarui TANGGAL_KEMBALI dan STATUS_PEMINJAMAN dengan filter ANGGOTA_ID

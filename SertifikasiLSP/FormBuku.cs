@@ -23,7 +23,6 @@ namespace BelajarSertifikasiLSP
         private void FormBuku_Load(object sender, EventArgs e)
         {
             LoadAllBooks();
-
         }
 
         private void LoadAllBooks()
@@ -68,7 +67,7 @@ namespace BelajarSertifikasiLSP
             MySqlConnection con = new MySqlConnection(connstring);
             con.Open();
 
-            // Query untuk mencari buku berdasarkan Judul
+            // Query untuk mencari buku berdasarkan Judul yang diketik di tBoxCari
             string sql = "SELECT BUKU_ID, BUKU_JUDUL FROM BUKU WHERE BUKU_JUDUL LIKE @searchTerm AND STATUS_DEL=0";
 
 

@@ -28,20 +28,19 @@ namespace BelajarSertifikasiLSP
             con.Open();
 
             string sql = @"
-            SELECT B.BUKU_ID, B.BUKU_JUDUL
-            FROM BUKU B
-            LEFT JOIN PEMINJAMAN P ON B.BUKU_ID = P.BUKU_ID AND P.STATUS_PEMINJAMAN = 0
-            WHERE P.BUKU_ID IS NULL OR P.STATUS_PEMINJAMAN = 1";
+                        SELECT B.BUKU_ID, B.BUKU_JUDUL
+                        FROM BUKU B
+                        LEFT JOIN PEMINJAMAN P ON B.BUKU_ID = P.BUKU_ID AND P.STATUS_PEMINJAMAN = 0
+                        WHERE P.BUKU_ID IS NULL OR P.STATUS_PEMINJAMAN = 1";
 
             MySqlCommand cmd = new MySqlCommand(sql, con);
             MySqlDataReader reader = cmd.ExecuteReader();
 
-            // Clear any existing items in the list box
             listBoxBukuAvailable.Items.Clear();
 
             while (reader.Read())
             {
-                // Add the book ID and title to the list box
+                // Manambahkan id buku dan judul buku yang belum dipinjam ke listBoxBukuAvailable
                 listBoxBukuAvailable.Items.Add($"{reader["BUKU_ID"]} - {reader["BUKU_JUDUL"]}");
             }
 
@@ -51,7 +50,7 @@ namespace BelajarSertifikasiLSP
 
         private void btnPinjam_Click(object sender, EventArgs e)
         {
-            // Check if a book is selected from the list box
+            // Mengecek apakah listBoxBukuAvailable.SelectedItem tidak kosong
             if (listBoxBukuAvailable.SelectedItem != null)
             {
                 string selectedItem = listBoxBukuAvailable.SelectedItem.ToString();
@@ -71,8 +70,8 @@ namespace BelajarSertifikasiLSP
                     MySqlCommand cmdInsert = new MySqlCommand(sqlInsert, con);
                     cmdInsert.Parameters.AddWithValue("@idAnggota", idAnggota);
                     cmdInsert.Parameters.AddWithValue("@idBuku", idBuku);
-                    cmdInsert.Parameters.AddWithValue("@tanggalPinjam", DateTime.Now); // Current date and time
-                    cmdInsert.Parameters.AddWithValue("@tanggalHarusKembali", DateTime.Now.AddDays(7)); // 7 days after current date
+                    cmdInsert.Parameters.AddWithValue("@tanggalPinjam", DateTime.Now); // DateTime sekarang
+                    cmdInsert.Parameters.AddWithValue("@tanggalHarusKembali", DateTime.Now.AddDays(7)); // 7 hari setelah hari ini
 
                     int rowsAffected = cmdInsert.ExecuteNonQuery();
                     if (rowsAffected > 0)

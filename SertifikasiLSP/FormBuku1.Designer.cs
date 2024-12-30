@@ -74,7 +74,6 @@ namespace BelajarSertifikasiLSP
             this.lblDetailBuku.Name = "lblDetailBuku";
             this.lblDetailBuku.Size = new System.Drawing.Size(0, 17);
             this.lblDetailBuku.TabIndex = 4;
-            this.lblDetailBuku.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnTambahBuku
             // 

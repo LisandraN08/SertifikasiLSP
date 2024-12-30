@@ -25,7 +25,6 @@ namespace BelajarSertifikasiLSP
             string idAnggota = tBoxIDAnggota.Text;
             string namaAnggota = tBoxNamaAnggota.Text;
 
-            // String koneksi ke database
             string connString = "server=sub7.sift-uc.id;uid=subsift8_lsp_user;pwd=BLT-?[aYWgkp;database=subsift8_lsp";
 
             using (MySqlConnection con = new MySqlConnection(connString))
@@ -34,12 +33,12 @@ namespace BelajarSertifikasiLSP
                 {
                     con.Open();
 
-                    string insertBukuQuery = "INSERT INTO ANGGOTA (ANGGOTA_ID, ANGGOTA_NAMA, STATUS_DEL) " +
+                    string insertAnggotaQuery = "INSERT INTO ANGGOTA (ANGGOTA_ID, ANGGOTA_NAMA, STATUS_DEL) " +
                                              "VALUES (@idAnggota, @namaAnggota, 0)";
 
-                    using (MySqlCommand cmd = new MySqlCommand(insertBukuQuery, con))
+                    using (MySqlCommand cmd = new MySqlCommand(insertAnggotaQuery, con))
                     {
-                        // Menambahkan parameter untuk query BUKU
+                        // Menambahkan parameter untuk query anggota
                         cmd.Parameters.AddWithValue("@idAnggota", idAnggota);
                         cmd.Parameters.AddWithValue("@namaAnggota", namaAnggota);
 

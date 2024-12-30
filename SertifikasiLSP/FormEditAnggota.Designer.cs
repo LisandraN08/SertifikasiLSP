@@ -29,21 +29,20 @@ namespace BelajarSertifikasiLSP
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblNamaAnggota = new System.Windows.Forms.Label();
             this.tBoxNamaAnggota = new System.Windows.Forms.TextBox();
             this.btnSimpan = new System.Windows.Forms.Button();
             this.btnHapus = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // lblNamaAnggota
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(103, 101);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "NAMA ANGGOTA:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lblNamaAnggota.AutoSize = true;
+            this.lblNamaAnggota.Location = new System.Drawing.Point(103, 101);
+            this.lblNamaAnggota.Name = "lblNamaAnggota";
+            this.lblNamaAnggota.Size = new System.Drawing.Size(125, 17);
+            this.lblNamaAnggota.TabIndex = 0;
+            this.lblNamaAnggota.Text = "NAMA ANGGOTA:";
             // 
             // tBoxNamaAnggota
             // 
@@ -51,7 +50,6 @@ namespace BelajarSertifikasiLSP
             this.tBoxNamaAnggota.Name = "tBoxNamaAnggota";
             this.tBoxNamaAnggota.Size = new System.Drawing.Size(495, 22);
             this.tBoxNamaAnggota.TabIndex = 2;
-            this.tBoxNamaAnggota.TextChanged += new System.EventHandler(this.tBoxNamaAnggota_TextChanged);
             // 
             // btnSimpan
             // 
@@ -83,7 +81,7 @@ namespace BelajarSertifikasiLSP
             this.Controls.Add(this.btnHapus);
             this.Controls.Add(this.btnSimpan);
             this.Controls.Add(this.tBoxNamaAnggota);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblNamaAnggota);
             this.Name = "FormEditAnggota";
             this.Text = "FormEditAnggota";
             this.Load += new System.EventHandler(this.FormEditPelanggan_Load);
@@ -94,7 +92,7 @@ namespace BelajarSertifikasiLSP
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblNamaAnggota;
         private System.Windows.Forms.TextBox tBoxNamaAnggota;
         private System.Windows.Forms.Button btnSimpan;
         private System.Windows.Forms.Button btnHapus;
