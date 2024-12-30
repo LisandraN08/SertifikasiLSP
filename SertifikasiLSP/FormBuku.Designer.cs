@@ -34,6 +34,7 @@ namespace BelajarSertifikasiLSP
             this.tBoxCari = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblDetailBuku = new System.Windows.Forms.Label();
+            this.cBoxStatusBuku = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,9 +60,9 @@ namespace BelajarSertifikasiLSP
             // 
             // tBoxCari
             // 
-            this.tBoxCari.Location = new System.Drawing.Point(91, 38);
+            this.tBoxCari.Location = new System.Drawing.Point(91, 36);
             this.tBoxCari.Name = "tBoxCari";
-            this.tBoxCari.Size = new System.Drawing.Size(501, 22);
+            this.tBoxCari.Size = new System.Drawing.Size(382, 22);
             this.tBoxCari.TabIndex = 4;
             // 
             // panel1
@@ -82,11 +83,24 @@ namespace BelajarSertifikasiLSP
             this.lblDetailBuku.Size = new System.Drawing.Size(0, 17);
             this.lblDetailBuku.TabIndex = 4;
             // 
+            // cBoxStatusBuku
+            // 
+            this.cBoxStatusBuku.FormattingEnabled = true;
+            this.cBoxStatusBuku.Items.AddRange(new object[] {
+            "Tersedia",
+            "Terpinjam",
+            "Semua"});
+            this.cBoxStatusBuku.Location = new System.Drawing.Point(471, 36);
+            this.cBoxStatusBuku.Name = "cBoxStatusBuku";
+            this.cBoxStatusBuku.Size = new System.Drawing.Size(121, 24);
+            this.cBoxStatusBuku.TabIndex = 18;
+            // 
             // FormBuku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 514);
+            this.Controls.Add(this.cBoxStatusBuku);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.listBoxBuku);
             this.Controls.Add(this.btnCari);
@@ -109,5 +123,6 @@ namespace BelajarSertifikasiLSP
         private System.Windows.Forms.TextBox tBoxCari;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblDetailBuku;
+        private System.Windows.Forms.ComboBox cBoxStatusBuku;
     }
 }

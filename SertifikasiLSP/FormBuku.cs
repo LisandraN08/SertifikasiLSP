@@ -56,40 +56,9 @@ namespace BelajarSertifikasiLSP
             LoadAllBooks();
         }
 
-        // Overloaded Method for Searching Books
-        private void CariBuku(string judul)
-        {
-            string connstring = "server=sub7.sift-uc.id;uid=subsift8_lsp_user;pwd=BLT-?[aYWgkp;database=subsift8_lsp";
-            MySqlConnection con = new MySqlConnection(connstring);
-            con.Open();
-
-            string sql = "SELECT * FROM BUKU WHERE BUKU_JUDUL LIKE @judul AND STATUS_DEL=0";
-            MySqlCommand cmd = new MySqlCommand(sql, con);
-            cmd.Parameters.AddWithValue("@judul", "%" + judul + "%");
-
-            listBoxBuku.Items.Clear();
-
-            using (MySqlDataReader reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    Buku buku = new Buku
-                    {
-                        ID = reader["BUKU_ID"].ToString(),
-                        Judul = reader["BUKU_JUDUL"].ToString(),
-                        Pengarang = reader["BUKU_PENGARANG"].ToString(),
-                        TanggalTerbit = Convert.ToDateTime(reader["BUKU_TANGGALTERBIT"])
-                    };
-                    daftarBuku.Add(buku);
-                    listBoxBuku.Items.Add($"{buku.ID} - {buku.Judul}");
-                }
-            }
-
-            con.Close();
-        }
-
         private void LoadAllBooks()
         {
+            cBoxStatusBuku.SelectedIndex = cBoxStatusBuku.Items.Count - 1;  // Secara default pilih "Semua"
             string connstring = "server=sub7.sift-uc.id;uid=subsift8_lsp_user;pwd=BLT-?[aYWgkp;database=subsift8_lsp";
             MySqlConnection con = new MySqlConnection(connstring);
             con.Open();
@@ -139,8 +108,64 @@ namespace BelajarSertifikasiLSP
 
         private void btnCari_Click(object sender, EventArgs e)
         {
-            string searchTerm = tBoxCari.Text;
-            CariBuku(searchTerm);
+            string searchTerm = tBoxCari.Text;  // Kata kunci untuk pencarian Judul
+            string statusBuku = cBoxStatusBuku.SelectedItem != null ? cBoxStatusBuku.SelectedItem.ToString() : null;  // Mengambil status dari ComboBox (Tersedia/Terpinjam)
+
+            string connstring = "server=sub7.sift-uc.id;uid=subsift8_lsp_user;pwd=BLT-?[aYWgkp;database=subsift8_lsp";
+            MySqlConnection con = new MySqlConnection(connstring);
+            con.Open();
+
+            try
+            {
+                Buku buku = new Buku();  // Buat objek buku
+
+                // Jika status ditentukan
+                if (!string.IsNullOrEmpty(statusBuku) && statusBuku != "Pilih Status")
+                {
+                    buku.Search(searchTerm, statusBuku);  // Pencarian berdasarkan Judul dan Status Buku
+                }
+                else
+                {
+                    buku.Search(searchTerm);  // Pencarian berdasarkan Judul saja
+                }
+
+                // Query untuk mencari buku berdasarkan Judul
+                string sql = "SELECT BUKU_ID, BUKU_JUDUL FROM BUKU WHERE BUKU_JUDUL LIKE @searchTerm AND STATUS_DEL=0 ";
+
+                // Menambahkan kondisi untuk status berdasarkan ComboBox
+                if (statusBuku == "Tersedia")
+                {
+                    sql += "AND BUKU_ID NOT IN (SELECT BUKU_ID FROM PEMINJAMAN WHERE STATUS_PEMINJAMAN = 0)";
+                }
+                else if (statusBuku == "Terpinjam")
+                {
+                    sql += "AND BUKU_ID IN (SELECT BUKU_ID FROM PEMINJAMAN WHERE STATUS_PEMINJAMAN = 0)";
+                }
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                {
+                    // Menambahkan parameter pencarian Judul
+                    cmd.Parameters.AddWithValue("@searchTerm", "%" + searchTerm + "%");
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        listBoxBuku.Items.Clear(); // Bersihkan hasil pencarian sebelumnya
+
+                        // Menambahkan id buku dan judul buku sesuai pencarian ke listBoxBuku
+                        while (reader.Read())
+                        {
+                            listBoxBuku.Items.Add($"{reader["BUKU_ID"]} - {reader["BUKU_JUDUL"]}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Buku tidak ditemukan", "Buku tidak ditemukan", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            con.Close();
         }
+
     }
 }
