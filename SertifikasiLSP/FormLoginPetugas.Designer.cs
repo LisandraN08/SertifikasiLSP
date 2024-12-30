@@ -65,6 +65,7 @@ namespace BelajarSertifikasiLSP
             // 
             this.tBoxPassword.Location = new System.Drawing.Point(272, 303);
             this.tBoxPassword.Name = "tBoxPassword";
+            this.tBoxPassword.PasswordChar = '*';
             this.tBoxPassword.Size = new System.Drawing.Size(314, 22);
             this.tBoxPassword.TabIndex = 13;
             // 
