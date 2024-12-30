@@ -34,6 +34,8 @@ Berikut adalah penjelasan singkat mengenai Class Diagram di atas:
      - `TambahAnggota()`: Menambahkan data anggota baru.
      - `EditAnggota()`: Mengedit data anggota.
      - `HapusAnggota()`: Menghapus data anggota.
+     - `SearchAnggota()`: Mencari data anggota berdasarkan nama anggota.
+     - `CheckDuplicate()`: Mengecek data anggota sebelum diinput agar tidak ada anggota yang duplikat.
 
 2. **Buku**:
    - **Atribut**: 
@@ -47,6 +49,8 @@ Berikut adalah penjelasan singkat mengenai Class Diagram di atas:
      - `TambahBuku()`: Menambahkan data buku baru.
      - `EditBuku()`: Mengedit data buku.
      - `HapusBuku()`: Menghapus data buku.
+     - `SearchBuku()`: Mencari data buku berdasarkan judul.
+     - `CheckDuplicate()`: Mengecek data buku sebelum diinput agar tidak ada buku yang duplikat.
 
 3. **Peminjaman**:
    - **Atribut**: 
