@@ -37,6 +37,7 @@ namespace BelajarSertifikasiLSP
             this.btnKembalikan = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnEditBuku = new System.Windows.Forms.Button();
+            this.cBoxStatusBuku = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +45,7 @@ namespace BelajarSertifikasiLSP
             // 
             this.tBoxCari.Location = new System.Drawing.Point(62, 47);
             this.tBoxCari.Name = "tBoxCari";
-            this.tBoxCari.Size = new System.Drawing.Size(501, 22);
+            this.tBoxCari.Size = new System.Drawing.Size(381, 22);
             this.tBoxCari.TabIndex = 0;
             // 
             // btnCari
@@ -118,11 +119,23 @@ namespace BelajarSertifikasiLSP
             this.btnEditBuku.UseVisualStyleBackColor = true;
             this.btnEditBuku.Click += new System.EventHandler(this.btnEditBuku_Click);
             // 
+            // cBoxStatusBuku
+            // 
+            this.cBoxStatusBuku.FormattingEnabled = true;
+            this.cBoxStatusBuku.Items.AddRange(new object[] {
+            "Tersedia",
+            "Terpinjam"});
+            this.cBoxStatusBuku.Location = new System.Drawing.Point(442, 45);
+            this.cBoxStatusBuku.Name = "cBoxStatusBuku";
+            this.cBoxStatusBuku.Size = new System.Drawing.Size(121, 24);
+            this.cBoxStatusBuku.TabIndex = 18;
+            // 
             // FormBuku1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 615);
+            this.Controls.Add(this.cBoxStatusBuku);
             this.Controls.Add(this.btnKembalikan);
             this.Controls.Add(this.btnEditBuku);
             this.Controls.Add(this.btnTambahBuku);
@@ -150,5 +163,6 @@ namespace BelajarSertifikasiLSP
         private System.Windows.Forms.Button btnKembalikan;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnEditBuku;
+        private System.Windows.Forms.ComboBox cBoxStatusBuku;
     }
 }
