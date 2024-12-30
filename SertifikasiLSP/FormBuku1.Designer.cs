@@ -124,7 +124,8 @@ namespace BelajarSertifikasiLSP
             this.cBoxStatusBuku.FormattingEnabled = true;
             this.cBoxStatusBuku.Items.AddRange(new object[] {
             "Tersedia",
-            "Terpinjam"});
+            "Terpinjam",
+            "Semua"});
             this.cBoxStatusBuku.Location = new System.Drawing.Point(442, 45);
             this.cBoxStatusBuku.Name = "cBoxStatusBuku";
             this.cBoxStatusBuku.Size = new System.Drawing.Size(121, 24);

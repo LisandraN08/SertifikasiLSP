@@ -38,6 +38,7 @@ namespace BelajarSertifikasiLSP
 
         private void LoadAllBooks()
         {
+            cBoxStatusBuku.SelectedIndex = cBoxStatusBuku.Items.Count - 1;  // Secara default pilih "Semua"
             panel1.Visible = false;
             btnEditBuku.Visible = false;
             btnKembalikan.Visible = false;
@@ -74,7 +75,7 @@ namespace BelajarSertifikasiLSP
         private void btnCari_Click(object sender, EventArgs e)
         {
             string searchTerm = tBoxCari.Text;  // Kata kunci untuk pencarian Judul
-            string statusBuku = cBoxStatusBuku.SelectedItem.ToString();  // Mengambil status dari ComboBox (Tersedia/Terpinjam)
+            string statusBuku = cBoxStatusBuku.SelectedItem != null ? cBoxStatusBuku.SelectedItem.ToString() : null;  // Mengambil status dari ComboBox (Tersedia/Terpinjam)
 
             string connstring = "server=sub7.sift-uc.id;uid=subsift8_lsp_user;pwd=BLT-?[aYWgkp;database=subsift8_lsp";
             MySqlConnection con = new MySqlConnection(connstring);
@@ -82,6 +83,18 @@ namespace BelajarSertifikasiLSP
 
             try
             {
+                Buku buku = new Buku();  // Buat objek buku
+
+                // Jika status ditentukan
+                if (!string.IsNullOrEmpty(statusBuku) && statusBuku != "Semua")
+                {
+                    buku.Search(searchTerm, statusBuku);  // Pencarian berdasarkan Judul dan Status Buku
+                }
+                else
+                {
+                    buku.Search(searchTerm);  // Pencarian berdasarkan Judul saja
+                }
+
                 // Query untuk mencari buku berdasarkan Judul
                 string sql = "SELECT BUKU_ID, BUKU_JUDUL FROM BUKU WHERE BUKU_JUDUL LIKE @searchTerm AND STATUS_DEL=0 ";
 
@@ -119,6 +132,7 @@ namespace BelajarSertifikasiLSP
 
             con.Close();
         }
+
 
         private void listBoxBuku_SelectedIndexChanged(object sender, EventArgs e)
         {
